@@ -40,11 +40,23 @@ class MyHomePage extends StatelessWidget {
             const Text(
               'Push the button to generate a random number',
             ),
-            Text(
-              context.watch<CounterProvider>().loading
-                  ? 'Loading...'
-                  : '${context.watch<CounterProvider>().index}',
-              style: Theme.of(context).textTheme.headline4,
+            Consumer<CounterProvider>(
+              builder: (_, counter, __) {
+                if (counter.counterEnum == CounterEnum.busy) {
+                  return const Center(child: CircularProgressIndicator());
+                }
+                if (counter.counterEnum == CounterEnum.failed) {
+                  return Text('${counter.index} is an Odd number',
+                      style: const TextStyle(color: Colors.red, fontSize: 34));
+                }
+                if (counter.counterEnum == CounterEnum.success) {
+                  return Text(
+                    '${counter.index} is an Even number',
+                    style: Theme.of(context).textTheme.headline4,
+                  );
+                }
+                return Container();
+              },
             ),
           ],
         ),
