@@ -7,7 +7,7 @@ class NetworkSimulator {
   final _rand = Random();
 
   Future<int> returnNumber() async {
-    /// simulate a delay for 5sec
+    /// simulate a delay for 2sec
     await Future.delayed(const Duration(seconds: 2));
     return _rand.nextInt(100);
   }

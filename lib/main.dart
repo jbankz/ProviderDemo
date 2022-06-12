@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:provider_demo/demo_provider.dart';
 
 void main() {
+  // Add 'shoud incase of error
   Provider.debugCheckInvalidValueType = null;
   runApp(const MyApp());
 }
@@ -63,7 +64,7 @@ class MyHomePage extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () =>
-            context.read<CounterProvider>().generateRandomNumbers(),
+            context.read<CounterProvider>().generateRandomNumbers(context),
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ),

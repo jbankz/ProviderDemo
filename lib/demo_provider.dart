@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 
 import 'network_simuator.dart';
 
@@ -21,7 +22,7 @@ class CounterProvider with ChangeNotifier {
   }
 
   /// generate random number and this numbers are expected to be even numbers
-  void generateRandomNumbers() async {
+  void generateRandomNumbers(BuildContext c) async {
     try {
       _showLoading(CounterEnum.busy);
 
